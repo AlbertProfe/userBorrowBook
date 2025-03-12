@@ -14,6 +14,6 @@ public interface BookRepository extends JpaRepository<Book, String> {
     List<Book> findByTitleContaining(String titleKeyword);
     Book findByIsbn(String isbn);
 
-    //List<Book> findByPublicationDateBeforeAndAvailable(LocalDate date);
-    //List<Book>  findByTitleContainingAndAvailable(String word );
+    List<Book> findByPublicationDateBeforeAndAvailable(LocalDate date, boolean available);
+    List<Book> findByTitleContainingAndAvailable(String titleContaining, boolean available);
 }

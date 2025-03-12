@@ -26,12 +26,12 @@ public class Borrow {
     private int points;
 
     // Unidirectional relationship with UserApp
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private UserApp user;
 
     // Unidirectional relationship with Book
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 }
