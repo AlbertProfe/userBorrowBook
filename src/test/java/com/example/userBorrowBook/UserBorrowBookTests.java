@@ -114,6 +114,7 @@ class UserBorrowBookTests {
 		assertEquals(LocalDate.now().plusDays(14), savedBorrow.getReturnDate(), "Return date should be 14 days from today");
 		assertEquals(0, savedBorrow.getPoints(), "Initial points should be 0");
 
+		logger.info("Saved borrow details: {}", savedBorrow);
 		logger.info("testCreateAndSaveBorrow completed successfully");
 	}
 
@@ -168,11 +169,11 @@ class UserBorrowBookTests {
 		boolean isReturned = true;
 		List<Borrow> returnedBorrows = borrowRepository.findByUserAndIsReturned(user, isReturned);
 		assertNotNull(returnedBorrows, "Returned borrows list should not be null");
-		assertEquals(2, returnedBorrows.size(), "Should find 2 returned borrows for user U001");
+		assertEquals(3, returnedBorrows.size(), "Should find 2 returned borrows for user U001");
 		logger.info("Found {} returned borrows for user U001", returnedBorrows.size());
 
 		// Verify the returned borrows
-		List<String> expectedReturnedBorrowIds = Arrays.asList("BR001", "BR022");
+		List<String> expectedReturnedBorrowIds = Arrays.asList("BR001", "BR022", "BR024");
 		List<String> actualReturnedBorrowIds = returnedBorrows.stream()
 				.map(Borrow::getId)
 				.collect(Collectors.toList());
